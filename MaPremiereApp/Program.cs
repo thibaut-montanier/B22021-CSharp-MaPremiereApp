@@ -4,16 +4,16 @@ namespace MaPremiereApp {
     class Program {
         static void Main(string[] args) {
 
-            // demander le prénom
+            // demander le prénoms
+            Personne p = new Personne();
             
-            string prenom = DemandeString("Quel est ton prénom ?");
+            // demander du nom
+            p.Prenom = DemandeString("Quel est ton prénom ?");
             // demander l'age
+            p.Age = DemandeEntier("Quel est ton age en numérique ?");
             
-            int age = DemandeEntier("Quel est ton age en numérique ?");
-            // afficher le message
-            string messageAAfficher;
             // création dbu message
-            messageAAfficher = CreerMessage(prenom, age);
+            string messageAAfficher = CreerMessage(p);
             //affichage
             Console.WriteLine(messageAAfficher);
             
@@ -44,14 +44,14 @@ namespace MaPremiereApp {
         }
 
 
-        public static string CreerMessage(string firstName, int age) {
+        public static string CreerMessage(Personne p) {
             string message = "";
-            if (age == 0) {
-                message = "Bonjour " + firstName + ", tu es un bébé";
-            } else if (age == 1) {
-                message = "Bonjour " + firstName + ", tu as 1 an.";
+            if (p.Age == 0) {
+                message = "Bonjour " + p.Prenom + ", tu es un bébé";
+            } else if (p.Age == 1) {
+                message = "Bonjour " + p.Prenom + ", tu as 1 an.";
             } else {
-                message = "Bonjour " + firstName + ", tu as " + age + " ans.";
+                message = "Bonjour " + p.Prenom + ", tu as " + p.Age + " ans.";
             }
             return message;
         }
