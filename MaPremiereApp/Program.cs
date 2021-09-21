@@ -4,13 +4,8 @@ namespace MaPremiereApp {
     class Program {
         static void Main(string[] args) {
 
-            // demander le prénoms
-            Personne p = new Personne();
-            
-            // demander du nom
-            p.Prenom = DemandeString("Quel est ton prénom ?");
-            // demander l'age
-            p.Age = DemandeEntier("Quel est ton age en numérique ?");
+            // créer la personne
+            Personne p = CreerPersonne();
             
             // création dbu message
             string messageAAfficher = CreerMessage(p);
@@ -23,6 +18,18 @@ namespace MaPremiereApp {
 
 
 
+
+        public static Personne CreerPersonne() {
+            Personne p = new Personne();
+
+            // demander du nom
+            p.Prenom = DemandeString("Quel est ton prénom ?");
+            // demander l'age
+            p.Age = DemandeEntier("Quel est ton age en numérique ?");
+
+            return p;
+
+        }
 
         public static int DemandeEntier(string message) {
             bool monTexteEstEntier = false;
