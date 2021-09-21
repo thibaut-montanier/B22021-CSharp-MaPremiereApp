@@ -5,47 +5,58 @@ namespace MaPremiereApp {
         static void Main(string[] args) {
 
             // demander le prénom
-            Console.WriteLine("Quel est ton prénom ?");
-            string prenom;
-            prenom = Console.ReadLine();
+            
+            string prenom = DemandeString("Quel est ton prénom ?");
             // demander l'age
-            Console.WriteLine("Quel est ton age ?");
-            string age;
-            age = Console.ReadLine();
+            
+            int age = DemandeEntier("Quel est ton age en numérique ?");
             // afficher le message
             string messageAAfficher;
-            // création du message
+            // création dbu message
             messageAAfficher = CreerMessage(prenom, age);
             //affichage
             Console.WriteLine(messageAAfficher);
-
-
-
-            string monTexte = "totot";
-            bool monTexteEstEntier = false;
-            int maValeur;
-
-            monTexteEstEntier = int.TryParse(monTexte, out maValeur);
-            // ici : 
-            // monTexteEstEntier vaut true si monTexte est un entier, false sinon
-            // maValeur : conversion de monTexte en valeur entière
             
+            Console.WriteLine("Appuyer sur une touche pour quitter");
+            Console.ReadKey();
+        }
+
+
+
+
+        public static int DemandeEntier(string message) {
+            bool monTexteEstEntier = false;
+            int age = 0;
+
+            while (monTexteEstEntier == false) {
+                Console.WriteLine(message);
+                string monTexte = Console.ReadLine();
+                monTexteEstEntier = int.TryParse(monTexte, out age);
+            }
+
+            return age;
+        }
+
+        public static string DemandeString(string message) {
+            Console.WriteLine(message);
+            return Console.ReadLine();
             
         }
 
-        public static string CreerMessage(string firstName, string agePers) {
+
+        public static string CreerMessage(string firstName, int age) {
             string message = "";
-            if (agePers == "0") {
-                message="Bonjour " + firstName + ", tu es un bébé";
-            } else if (agePers == "1") {
+            if (age == 0) {
+                message = "Bonjour " + firstName + ", tu es un bébé";
+            } else if (age == 1) {
                 message = "Bonjour " + firstName + ", tu as 1 an.";
             } else {
-                message = "Bonjour " + firstName + ", tu as " + agePers + " ans.";
+                message = "Bonjour " + firstName + ", tu as " + age + " ans.";
             }
             return message;
         }
         public static int additionne(int nb1, int nb2) {
-            
+
             return 0;
         }
     }
