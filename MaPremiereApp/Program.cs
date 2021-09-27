@@ -4,27 +4,6 @@ using System.Collections.Generic;
 namespace MaPremiereApp {
     class Program {
         static void Main(string[] args) {
-            // demander du nom
-
-
-
-
-            //// 1. Instanciation de ma liste
-            //List<Personne> lP = new List<Personne>();
-            //// ajout d'une personne à la liste
-            //Personne p2 = new Personne();
-            //p2.Prenom = "Pierre";
-            //p2.Age = 25;
-            //lP.Add(p2);
-            //// comptage
-            //int nb = lP.Count;
-
-            //// parcours
-            //foreach (Personne pIterateur in lP) {
-            //    Console.WriteLine(pIterateur.Prenom);
-            //}
-
-
 
             // Déclaration de ma liste
             List<Personne> lesPersonnes = new List<Personne>();
@@ -38,13 +17,13 @@ namespace MaPremiereApp {
                 Console.WriteLine("3. Quitter");
                 string choixUtilisateur = Console.ReadLine();
                 if (choixUtilisateur == "1") {
-                    Personne p1 = CreerPersonne();
+                    Personne p1 = PersonneHelper.CreerPersonne();
                     lesPersonnes.Add(p1);
                 } else if (choixUtilisateur == "2") {
                     int sumAge = 0;
                     foreach (Personne p in lesPersonnes) {
                         sumAge = sumAge + p.Age;
-                        string messageAAfficher = CreerMessage(p);
+                        string messageAAfficher = PersonneHelper.CreerMessage(p);
                         //affichage
                         Console.WriteLine(messageAAfficher);
                     }
@@ -59,55 +38,6 @@ namespace MaPremiereApp {
 
         }
 
-
-
-
-        public static Personne CreerPersonne() {
-            Personne p = new Personne();
-
-            // demander du nom
-            p.Prenom = DemandeString("Quel est ton prénom ?");
-            // demander l'age
-            p.Age = DemandeEntier("Quel est ton age en numérique ?");
-
-            return p;
-
-        }
-
-        public static int DemandeEntier(string message) {
-            bool monTexteEstEntier = false;
-            int age = 0;
-
-            while (monTexteEstEntier == false) {
-                Console.WriteLine(message);
-                string monTexte = Console.ReadLine();
-                monTexteEstEntier = int.TryParse(monTexte, out age);
-            }
-
-            return age;
-        }
-
-        public static string DemandeString(string message) {
-            Console.WriteLine(message);
-            return Console.ReadLine();
-
-        }
-
-
-        public static string CreerMessage(Personne p) {
-            string message = "";
-            if (p.Age == 0) {
-                message = "Bonjour " + p.Prenom + ", tu es un bébé";
-            } else if (p.Age == 1) {
-                message = "Bonjour " + p.Prenom + ", tu as 1 an.";
-            } else {
-                message = "Bonjour " + p.Prenom + ", tu as " + p.Age + " ans.";
-            }
-            return message;
-        }
-        public static int additionne(int nb1, int nb2) {
-
-            return 0;
-        }
+        
     }
 }
