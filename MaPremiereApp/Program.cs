@@ -6,12 +6,7 @@ namespace MaPremiereApp {
         static void Main(string[] args) {
             // demander du nom
 
-            // menu de saisie
-            //Console.WriteLine("Que voulez vous faire ?");
-            //Console.WriteLine("1. Creer une nouvelle personne");
-            //Console.WriteLine("2. Afficher les personnes");
-            //Console.WriteLine("3. Quitter");
-            //string choixUtilisateur = Console.ReadLine();
+
 
 
             //// 1. Instanciation de ma liste
@@ -33,25 +28,35 @@ namespace MaPremiereApp {
 
             // Déclaration de ma liste
             List<Personne> lesPersonnes = new List<Personne>();
-            // créer la personne
-            Personne p1 = CreerPersonne();
-            lesPersonnes.Add(p1);
-            Personne p2 = CreerPersonne();
-            lesPersonnes.Add(p2);
 
-            
-            // Affichage d'une personne
-            // création dbu message
-            foreach(Personne p in lesPersonnes) {
-                string messageAAfficher = CreerMessage(p);
-                //affichage
-                Console.WriteLine(messageAAfficher);
+            // menu de saisie
+            bool exit = false;
+            while (exit == false) {
+                Console.WriteLine("Que voulez vous faire ?");
+                Console.WriteLine("1. Creer une nouvelle personne");
+                Console.WriteLine("2. Afficher les personnes");
+                Console.WriteLine("3. Quitter");
+                string choixUtilisateur = Console.ReadLine();
+                if (choixUtilisateur == "1") {
+                    Personne p1 = CreerPersonne();
+                    lesPersonnes.Add(p1);
+                } else if (choixUtilisateur == "2") {
+                    int sumAge = 0;
+                    foreach (Personne p in lesPersonnes) {
+                        sumAge = sumAge + p.Age;
+                        string messageAAfficher = CreerMessage(p);
+                        //affichage
+                        Console.WriteLine(messageAAfficher);
+                    }
+                    int moyenne = sumAge / lesPersonnes.Count;
+                    Console.WriteLine("La moyenne d'age est : " + moyenne);
+                } else if (choixUtilisateur == "3") {
+                    exit = true;
+                    Console.WriteLine("Appuyer sur une touche pour quitter");
+                    Console.ReadKey();
+                }
             }
 
-
-           
-            Console.WriteLine("Appuyer sur une touche pour quitter");
-            Console.ReadKey();
         }
 
 
@@ -85,7 +90,7 @@ namespace MaPremiereApp {
         public static string DemandeString(string message) {
             Console.WriteLine(message);
             return Console.ReadLine();
-            
+
         }
 
 
