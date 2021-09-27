@@ -1,10 +1,41 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MaPremiereApp {
     class Program {
         static void Main(string[] args) {
+            // demander du nom
+
+            // menu de saisie
+            Console.WriteLine("Que voulez vous faire ?");
+            Console.WriteLine("1. Creer une nouvelle personne");
+            Console.WriteLine("2. Afficher les personnes");
+            Console.WriteLine("3. Quitter");
+            string choixUtilisateur = Console.ReadLine();
+
+
+
+
+
+
+            // 1. Instanciation de ma liste
+            List<Personne> lP = new List<Personne>();
+            // ajout d'une personne à la liste
+            Personne p2 = new Personne();
+            p2.Prenom = "Pierre";
+            p2.Age = 25;
+            lP.Add(p2);
+            // comptage
+            int nb= lP.Count;
+
+            // parcours
+            foreach(Personne pIterateur in lP) {
+
+            }
+
 
             // créer la personne
+
             Personne p = CreerPersonne();
             
             // création dbu message
