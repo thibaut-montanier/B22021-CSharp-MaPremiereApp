@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace MaPremiereApp {
-    class PersonneHelper {
+    public class PersonneHelper {
 
+
+        public static SaisieUtilisateurHelper saisieUtilisateur = new SaisieUtilisateurHelper();
 
         public static Personne CreerPersonne() {
             Personne p = new Personne();
 
             // demander du nom
-            p.Prenom = SaisieUtilisateurHelper.DemandeString("Quel est ton prénom ?");
+            p.Prenom = saisieUtilisateur.DemandeString("Quel est ton prénom ?");
             // demander l'age
-            p.Age = SaisieUtilisateurHelper.DemandeEntier("Quel est ton age en numérique ?");
+            p.Age = saisieUtilisateur.DemandeEntier("Quel est ton age en numérique ?");
 
             return p;
 

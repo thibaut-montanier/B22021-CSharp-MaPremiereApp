@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace MaPremiereApp {
-    class SaisieUtilisateurHelper {
+    public class SaisieUtilisateurHelper {
         /// <summary>
         /// Demande à l'utilisateur un entier
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static int DemandeEntier(string message) {
+        public virtual int DemandeEntier(string message) {
             bool monTexteEstEntier = false;
             int age = 0;
 
@@ -23,7 +23,7 @@ namespace MaPremiereApp {
         }
 
         // Demande à l'utilisateur une chaine de caractère
-        public static string DemandeString(string message) {
+        public virtual string DemandeString(string message) {
             Console.WriteLine(message);
             return Console.ReadLine();
 

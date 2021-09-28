@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace MaPremiereApp {
-    class Personne {
+    public class Personne {
         public int ID;
 
         public string Prenom;
