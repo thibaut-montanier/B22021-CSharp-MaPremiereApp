@@ -7,7 +7,7 @@ namespace MaPremiereApp {
 
             // Déclaration de ma liste
             List<Personne> lesPersonnes = new List<Personne>();
-
+            PersonneHelper persHelper = new PersonneHelper();
             // menu de saisie
             bool exit = false;
             while (exit == false) {
@@ -17,13 +17,13 @@ namespace MaPremiereApp {
                 Console.WriteLine("3. Quitter");
                 string choixUtilisateur = Console.ReadLine();
                 if (choixUtilisateur == "1") {
-                    Personne p1 = PersonneHelper.CreerPersonne();
+                    Personne p1 = persHelper.CreerPersonne();
                     lesPersonnes.Add(p1);
                 } else if (choixUtilisateur == "2") {
                     int sumAge = 0;
                     foreach (Personne p in lesPersonnes) {
                         sumAge = sumAge + p.Age;
-                        string messageAAfficher = PersonneHelper.CreerMessage(p);
+                        string messageAAfficher = persHelper.CreerMessage(p);
                         //affichage
                         Console.WriteLine(messageAAfficher);
                     }

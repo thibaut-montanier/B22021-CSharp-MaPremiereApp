@@ -6,9 +6,9 @@ namespace MaPremiereApp {
     public class PersonneHelper {
 
 
-        public static SaisieUtilisateurHelper saisieUtilisateur = new SaisieUtilisateurHelper();
+        public SaisieUtilisateurHelper saisieUtilisateur = new SaisieUtilisateurHelper();
 
-        public static Personne CreerPersonne() {
+        public Personne CreerPersonne() {
             Personne p = new Personne();
 
             // demander du nom
@@ -22,7 +22,7 @@ namespace MaPremiereApp {
 
 
 
-        public static string CreerMessage(Personne p) {
+        public string CreerMessage(Personne p) {
             string message = "";
             if (p.Age == 0) {
                 message = "Bonjour " + p.Prenom + ", tu es un bébé";
