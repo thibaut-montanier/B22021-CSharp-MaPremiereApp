@@ -1,8 +1,9 @@
-﻿using System;
+﻿using MaPremiereApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MaPremiereApp {
+namespace MaPremiereApp.Services {
     public class PersonneHelper {
 
 

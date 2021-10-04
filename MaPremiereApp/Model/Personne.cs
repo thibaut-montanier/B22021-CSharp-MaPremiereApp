@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MaPremiereApp {
+namespace MaPremiereApp.Model {
     public class Personne {
         public int ID;
 

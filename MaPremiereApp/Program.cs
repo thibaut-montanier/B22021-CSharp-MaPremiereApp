@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MaPremiereApp.Model;
+using MaPremiereApp.Services;
+using System;
 using System.Collections.Generic;
 
 namespace MaPremiereApp {
