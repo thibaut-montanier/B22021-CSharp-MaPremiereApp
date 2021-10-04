@@ -7,6 +7,37 @@ namespace MaPremiereApp {
     class Program {
         static void Main(string[] args) {
 
+
+            /// 1. Creer une famille
+            Famille uneFamille = new Famille();
+            uneFamille.Nom = "Dupond";
+            uneFamille.Membres = new List<Personne>();
+            /// 2. Créer une personnes
+            /// 2.1 Créer la personne
+            Personne pers = new Personne();
+            pers.Prenom = "Jean";
+            pers.Age = 7;
+            /// 2.2 Faire le lien avec la famille
+            pers.Famille = uneFamille;
+            pers.Famille.Membres.Add(pers);
+
+            // Bonjour Jean Dupond, tu as 5 ans
+            Console.WriteLine("Bonjour " + pers.Prenom + pers.Famille.Nom + ", tu as " + pers.Age);
+            Console.WriteLine("La famille Dupond contient " + uneFamille.Membres.Count + " membre(s) : Jean");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             // Déclaration de ma liste
             List<Personne> lesPersonnes = new List<Personne>();
             PersonneHelper persHelper = new PersonneHelper();
