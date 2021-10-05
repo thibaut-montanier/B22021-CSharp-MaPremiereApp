@@ -12,10 +12,11 @@ namespace MaPremiereApp.Services {
         /// </summary>
         /// <returns>Une nouvelle famille</returns>
         public Famille CreerFamille() {
-            Famille result = new Famille();
-            result.Nom = saisieUtilisateur.DemandeString("Nom de la famille ?");
+            Famille famille = new Famille();
+            famille.Nom = saisieUtilisateur.DemandeString("Nom de la famille ?");
 
-            return result;
+            famille.Membres = new List<Personne>();
+            return famille;
         }
     }
 }

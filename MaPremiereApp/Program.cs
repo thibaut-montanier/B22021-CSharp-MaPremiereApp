@@ -35,6 +35,7 @@ namespace MaPremiereApp {
                         foreach (var f in lesFamilles) {
                             if (f.Nom == NomDeLaFamille) {
                                 p1.Famille = f;
+                                f.Membres.Add(p1);
                                 break;
                             }
                         }
@@ -64,15 +65,16 @@ namespace MaPremiereApp {
                     lesFamilles.Add(f);
                 } else if (choixUtilisateur == "4") {
                     // affichage des familles et de leurs membres
-                    foreach (Famille f in lesFamilles) {
-                        Console.WriteLine("Famille : " + f.Nom);
+                    foreach (Famille uneFamille in lesFamilles) {
+                        List<string> PrenomDesMembres = new List<string>();
+                        foreach (Personne p in uneFamille.Membres) {
+                            PrenomDesMembres.Add(p.Prenom);
+                        }
+                        Console.WriteLine("La famille " + uneFamille.Nom + " contient " + uneFamille.Membres.Count + " membre(s) : " + String.Join(", ", PrenomDesMembres));
+                        
                     }
 
-                    //List<string> PrenomDesMembres = new List<string>();
-                    //foreach (Personne p in uneFamille.Membres) {
-                    //    PrenomDesMembres.Add(p.Prenom);
-                    //}
-                    //Console.WriteLine("La famille Dupond contient " + uneFamille.Membres.Count + " membre(s) : " + String.Join(", ", PrenomDesMembres));
+
 
                 } else if (choixUtilisateur == "Q") {
                     exit = true;
