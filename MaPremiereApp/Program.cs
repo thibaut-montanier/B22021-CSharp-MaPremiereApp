@@ -6,14 +6,11 @@ using System.Collections.Generic;
 namespace MaPremiereApp {
     class Program {
         static void Main(string[] args) {
-
-
             // Déclaration de ma liste
-            List<Personne> lesPersonnes = new List<Personne>();
-            List<Famille> lesFamilles = new List<Famille>();
-            PersonneHelper persHelper = new PersonneHelper();
-            FamilleHelper famHelper = new FamilleHelper();
             SaisieUtilisateurHelper saisieHelper = new SaisieUtilisateurHelper();
+            FamilleHelper famHelper = new FamilleHelper();
+            PersonneHelper persHelper = new PersonneHelper(saisieHelper, famHelper) ;
+            
             // menu de saisie
             bool exit = false;
             while (exit == false) {
@@ -23,59 +20,18 @@ namespace MaPremiereApp {
                                     "2. Afficher les personnes\n" +
                                     "3. Créer une famille\n" +
                                     "4. Afficher les familles\n" +
-                                    "9. Quitter";
+                                    "Q. Quitter";
                 string choixUtilisateur = saisieHelper.DemandeString(MsgMenu);
 
                 if (choixUtilisateur == "1") {
-                    Personne p1 = persHelper.CreerPersonne();
-
-                    // on boucle sur la demande de la famille : elle doit exister
-                    while (p1.Famille == null) {
-                        string NomDeLaFamille = saisieHelper.DemandeString("Nom de la famille ?");
-                        foreach (var f in lesFamilles) {
-                            if (f.Nom == NomDeLaFamille) {
-                                p1.Famille = f;
-                                f.Membres.Add(p1);
-                                break;
-                            }
-                        }
-                        if (p1.Famille == null) {
-                            Console.WriteLine("La famille n'existe pas");
-                        }
-                    }
-
-                    // ajout de la personne à la liste
-                    lesPersonnes.Add(p1);
-
-                    
-
+                    persHelper.CreerPersonne();
                 } else if (choixUtilisateur == "2") {
-                    int sumAge = 0;
-                    foreach (Personne p in lesPersonnes) {
-                        sumAge = sumAge + p.Age;
-                        string messageAAfficher = persHelper.CreerMessage(p);
-                        //affichage
-                        Console.WriteLine(messageAAfficher);
-                    }
-                    int moyenne = sumAge / lesPersonnes.Count;
-                    Console.WriteLine("La moyenne d'age est : " + moyenne);
+                    persHelper.AfficherLesPersonnes();
                 } else if (choixUtilisateur == "3") {
                     // créer une famille
-                    Famille f = famHelper.CreerFamille();
-                    lesFamilles.Add(f);
+                    famHelper.CreerFamille();
                 } else if (choixUtilisateur == "4") {
-                    // affichage des familles et de leurs membres
-                    foreach (Famille uneFamille in lesFamilles) {
-                        List<string> PrenomDesMembres = new List<string>();
-                        foreach (Personne p in uneFamille.Membres) {
-                            PrenomDesMembres.Add(p.Prenom);
-                        }
-                        Console.WriteLine("La famille " + uneFamille.Nom + " contient " + uneFamille.Membres.Count + " membre(s) : " + String.Join(", ", PrenomDesMembres));
-                        
-                    }
-
-
-
+                    famHelper.AfficherLesFamilles();
                 } else if (choixUtilisateur == "Q") {
                     exit = true;
                     Console.WriteLine("Appuyer sur une touche pour quitter");

@@ -5,10 +5,22 @@ using System.Text;
 
 namespace MaPremiereApp.Services {
     public class PersonneHelper {
+        
+        
+        private List<Personne> lesPersonnes = new List<Personne>();
 
+        private SaisieUtilisateurHelper saisieUtilisateur ;
+        private FamilleHelper familleHelper;
+        public PersonneHelper(SaisieUtilisateurHelper saisieUtilisateur, FamilleHelper familleHelper) {
+            this.saisieUtilisateur = saisieUtilisateur;
+            this.familleHelper = familleHelper;
+        }
 
-        public SaisieUtilisateurHelper saisieUtilisateur = new SaisieUtilisateurHelper();
-
+        /// <summary>
+        /// Création de la famille
+        /// </summary>
+        /// <param name="lesFamilles"></param>
+        /// <returns></returns>
         public Personne CreerPersonne() {
             Personne p = new Personne();
 
@@ -16,13 +28,34 @@ namespace MaPremiereApp.Services {
             p.Prenom = saisieUtilisateur.DemandeString("Quel est ton prénom ?");
             // demander l'age
             p.Age = saisieUtilisateur.DemandeEntier("Quel est ton age en numérique ?");
+            p.Famille = familleHelper.DemandeFamille();
+            // ajout de la personne en tant que membre de sa famille
+            p.Famille.Membres.Add(p);
 
             return p;
 
         }
 
+        /// <summary>
+        /// Affichage de la liste des personnes
+        /// </summary>
+        public void AfficherLesPersonnes() {
+            int sumAge = 0;
+            foreach (Personne p in lesPersonnes) {
+                sumAge = sumAge + p.Age;
+                string messageAAfficher = CreerMessage(p);
+                //affichage
+                Console.WriteLine(messageAAfficher);
+            }
+            int moyenne = sumAge / lesPersonnes.Count;
+            Console.WriteLine("La moyenne d'age est : " + moyenne);
+        }
 
-
+        /// <summary>
+        /// Création d'un message pour afficher une personne
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         public string CreerMessage(Personne p) {
             string message = "";
             if (p.Age == 0) {
