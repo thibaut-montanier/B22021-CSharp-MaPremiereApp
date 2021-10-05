@@ -18,10 +18,18 @@ namespace MaPremiereApp.Tests {
             
         }
         [Test]
+        public void CreerFamilleTest() {
+            
+            Famille result = familleHelper.CreerFamille();
+            Assert.AreEqual("Dupond", result.Nom);   
+        }
+
+        [Test]
         public void CreerPersonneTest() {
-            PersonneHelper.saisieUtilisateur = new MockSaisieUtilisateurHelper();
-            Personne result = PersonneHelper.CreerPersonne();
-            Assert.AreEqual("Pierre", result.Prenom);   
+
+            Personne result = personneHelper.CreerPersonne();
+            Assert.AreEqual("Jean", result.Prenom);
+            Assert.AreEqual("Dupond", result.Famille.Nom);
         }
     }
 }
