@@ -32,6 +32,8 @@ namespace MaPremiereApp.Services {
             // ajout de la personne en tant que membre de sa famille
             p.Famille.Membres.Add(p);
 
+            lesPersonnes.Add(p);
+
             return p;
 
         }
@@ -47,8 +49,11 @@ namespace MaPremiereApp.Services {
                 //affichage
                 Console.WriteLine(messageAAfficher);
             }
-            int moyenne = sumAge / lesPersonnes.Count;
-            Console.WriteLine("La moyenne d'age est : " + moyenne);
+            if (lesPersonnes.Count > 0) {
+                int moyenne = sumAge / lesPersonnes.Count;
+                Console.WriteLine("La moyenne d'age est : " + moyenne);
+            }
+            
         }
 
         /// <summary>
