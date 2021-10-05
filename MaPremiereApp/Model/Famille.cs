@@ -6,7 +6,7 @@ namespace MaPremiereApp.Model {
     public class Famille {
 
 
-        public string Nom;
-        public List<Personne> Membres;
+        public string Nom { get; set; }
+        public List<Personne> Membres { get; set; }
     }
 }
