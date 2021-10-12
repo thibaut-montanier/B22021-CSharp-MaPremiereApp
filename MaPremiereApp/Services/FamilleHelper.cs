@@ -22,6 +22,7 @@ namespace MaPremiereApp.Services {
         /// </summary>
         /// <returns>Une nouvelle famille</returns>
         public virtual Famille CreerFamille() {
+            throw new NotImplementedException();
             Famille famille = new Famille();
             famille.Nom = saisieUtilisateur.DemandeString("Nom de la famille ?");
 
