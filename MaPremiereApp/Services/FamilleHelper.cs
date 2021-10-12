@@ -26,7 +26,7 @@ namespace MaPremiereApp.Services {
             famille.Nom = saisieUtilisateur.DemandeString("Nom de la famille ?");
 
             famille.Membres = new List<Personne>();
-            lesFamilles.Add(famille);
+            _lesFamilles.Add(famille);
             return famille;
         }
 
@@ -38,7 +38,7 @@ namespace MaPremiereApp.Services {
         public string genereMessageLesFamilles() {
             // affichage des familles et de leurs membres
             List<string> lesMessagesFamille = new List<string>();
-            foreach (Famille uneFamille in lesFamilles) {
+            foreach (Famille uneFamille in _lesFamilles) {
                 List<string> PrenomDesMembres = new List<string>();
                 foreach (Personne p in uneFamille.Membres) {
                     PrenomDesMembres.Add(p.Prenom);
@@ -55,7 +55,7 @@ namespace MaPremiereApp.Services {
             // on boucle sur la demande de la famille : elle doit exister
             while (true) {
                 string NomDeLaFamille = saisieUtilisateur.DemandeString("Nom de la famille ?");
-                foreach (var f in lesFamilles) {
+                foreach (var f in _lesFamilles) {
                     if (f.Nom == NomDeLaFamille) {
                         return f;
                     }
