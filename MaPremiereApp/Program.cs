@@ -8,7 +8,7 @@ namespace MaPremiereApp {
         static void Main(string[] args) {
             // Déclaration de ma liste
             SaisieUtilisateurHelper saisieHelper = new SaisieUtilisateurHelper();
-            FamilleHelper famHelper = new FamilleHelper();
+            FamilleHelper famHelper = new FamilleHelper(saisieHelper);
             PersonneHelper persHelper = new PersonneHelper(saisieHelper, famHelper) ;
             
             // menu de saisie

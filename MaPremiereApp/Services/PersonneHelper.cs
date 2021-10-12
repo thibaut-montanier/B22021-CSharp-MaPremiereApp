@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace MaPremiereApp.Services {
-    public class PersonneHelper {
+     class PersonneHelper {
         
         
         private List<Personne> lesPersonnes = new List<Personne>();
@@ -17,10 +17,9 @@ namespace MaPremiereApp.Services {
         }
 
         /// <summary>
-        /// Création de la famille
+        /// Création de la personne
         /// </summary>
-        /// <param name="lesFamilles"></param>
-        /// <returns></returns>
+        /// <returns>Personne qui a été créée</returns>
         public Personne CreerPersonne() {
             Personne p = new Personne();
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MaPremiereApp.Services {
+namespace CustomUserHelper {
     public class SaisieUtilisateurHelper {
         /// <summary>
         /// Demande à l'utilisateur un entier
@@ -15,17 +15,13 @@ namespace MaPremiereApp.Services {
 
             while (monTexteEstEntier == false) {
                 Console.WriteLine(message);
-                string monTexte = ConsoleReadLine();
+                string monTexte = Console.ReadLine();
                 monTexteEstEntier = int.TryParse(monTexte, out age);
             }
 
             return age;
         }
 
-
-        public virtual string ConsoleReadLine() {
-            return Console.ReadLine();
-        }
         // Demande à l'utilisateur une chaine de caractère
         public virtual string DemandeString(string message) {
             Console.WriteLine(message);
