@@ -33,5 +33,9 @@ namespace MaPremiereApp.Services {
 
         }
 
+        public void AfficheMessage(string message) {
+            Console.WriteLine(message);
+        }
+
     }
 }

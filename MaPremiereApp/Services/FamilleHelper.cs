@@ -6,7 +6,7 @@ using System.Text;
 namespace MaPremiereApp.Services {
     public  class FamilleHelper {
         #region Champs privés
-        private List<Famille> lesFamilles = new List<Famille>();
+        public List<Famille> _lesFamilles = new List<Famille>();
         #endregion
 
 
@@ -32,14 +32,23 @@ namespace MaPremiereApp.Services {
 
         public virtual void AfficherLesFamilles() {
             // affichage des familles et de leurs membres
+            saisieUtilisateur.AfficheMessage(genereMessageLesFamilles());
+        }
+
+        public string genereMessageLesFamilles() {
+            // affichage des familles et de leurs membres
+            List<string> lesMessagesFamille = new List<string>();
             foreach (Famille uneFamille in lesFamilles) {
                 List<string> PrenomDesMembres = new List<string>();
                 foreach (Personne p in uneFamille.Membres) {
                     PrenomDesMembres.Add(p.Prenom);
                 }
-                Console.WriteLine("La famille " + uneFamille.Nom + " contient " + uneFamille.Membres.Count + " membre(s) : " + String.Join(", ", PrenomDesMembres));
+                lesMessagesFamille.Add("La famille " + uneFamille.Nom + " contient " + uneFamille.Membres.Count + " membre(s) : " + String.Join(", ", PrenomDesMembres));
             }
+            return String.Join("\n", lesMessagesFamille);
         }
+
+
 
         public virtual Famille DemandeFamille() {
 
