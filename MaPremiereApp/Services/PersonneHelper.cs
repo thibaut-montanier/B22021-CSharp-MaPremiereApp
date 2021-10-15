@@ -7,7 +7,7 @@ namespace MaPremiereApp.Services {
      class PersonneHelper {
         
         
-        private List<Personne> lesPersonnes = new List<Personne>();
+        //private List<Personne> lesPersonnes = new List<Personne>();
 
         private SaisieUtilisateurHelper saisieUtilisateur ;
         private FamilleHelper familleHelper;
@@ -15,6 +15,8 @@ namespace MaPremiereApp.Services {
             this.saisieUtilisateur = saisieUtilisateur;
             this.familleHelper = familleHelper;
         }
+
+
 
         /// <summary>
         /// Création de la personne
@@ -31,25 +33,34 @@ namespace MaPremiereApp.Services {
             // ajout de la personne en tant que membre de sa famille
             p.Famille.Membres.Add(p);
 
-            lesPersonnes.Add(p);
+            this.Add(p);
 
             return p;
 
         }
 
+
+        public List<Personne> getAll() {
+            throw new NotImplementedException();
+        }
+
+        private void Add(Personne p) {
+            throw new NotImplementedException();
+        }
         /// <summary>
         /// Affichage de la liste des personnes
         /// </summary>
         public void AfficherLesPersonnes() {
             int sumAge = 0;
-            foreach (Personne p in lesPersonnes) {
+            List<Personne> allP = this.getAll();
+            foreach (Personne p in allP) {
                 sumAge = sumAge + p.Age;
                 string messageAAfficher = CreerMessage(p);
                 //affichage
                 Console.WriteLine(messageAAfficher);
             }
-            if (lesPersonnes.Count > 0) {
-                int moyenne = sumAge / lesPersonnes.Count;
+            if (allP.Count > 0) {
+                int moyenne = sumAge / allP.Count;
                 Console.WriteLine("La moyenne d'age est : " + moyenne);
             }
             
